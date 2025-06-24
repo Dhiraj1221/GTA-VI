@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <link rel="icon" type="image/x-icon" href="channels4_profile.jpg">
+     <title>Grand Theft Auto VI - Rockstar Games</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+          html, body {
+               height: 100%;
+               margin: 0;
+               padding: 0;
+               background: #000;
+               color: #fff;
+               font-family: 'Roboto', Arial, sans-serif;
+               min-height: 100vh;
+          }
+          body {
+               overflow: hidden;
+          }
+          .overlay {
+               position: fixed;
+               inset: 0;
+               background: #000;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               z-index: 9999;
+               transition: opacity 0.5s;
+          }
+          .overlay.hide {
+               opacity: 0;
+               pointer-events: none;
+          }
+          .grqyab-text {
+               font-size: 7vw;
+               font-weight: bold;
+               letter-spacing: 0.2em;
+               color: #fff;
+               opacity: 0;
+               transform: translateY(-100px) scale(1.5);
+               animation: sinkIn 2s cubic-bezier(0.77,0,0.175,1) forwards;
+               text-shadow: 0 4px 32px #fff2, 0 1px 0 #fff8;
+               user-select: none;
+          }
+          @keyframes sinkIn {
+               0% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(1.5);
+               }
+               60% {
+                    opacity: 1;
+                    transform: translateY(10px) scale(1);
+               }
+               80% {
+                    transform: translateY(-5px) scale(1.05);
+               }
+               100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+               }
+          }
+          .main-content {
+               opacity: 0;
+               transition: opacity 0.5s;
+               min-height: 100vh;
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+          }
+          .main-content.show {
+               opacity: 1;
+          }
+          @media (max-width: 600px) {
+               .grqyab-text {
+                    font-size: 12vw;
+               }
+          }
+     </style>
+</head>
+<body>
+     <div class="overlay" id="overlay">
+          <span class="grqyab-text" style="font-family: monospace;">GTA VI</span>
+     </div>
+     <div class="main-content" id="mainContent">
+          <!-- Actual website content goes here -->
+          <h1>Wake Up !!</h1>
+          <p>Get Rich Quick You Are Brokie</p>
+          <img id="mainGif" class="main-gif" src="you're-broke-broke.gif" alt="GIF">
+     </div>
+     <script>
+          window.addEventListener('DOMContentLoaded', function() {
+               setTimeout(function() {
+                    document.getElementById('overlay').classList.add('hide');
+                    document.getElementById('mainContent').classList.add('show');
+                    document.body.style.overflow = '';
+               }, 2000);
+          });
+     </script>
+</body>
+</html>
+
+<!-- Google Fonts: Playfair Display for a rich, royal look and Cinzel for main content -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+<!-- Tab icon (favicon) -->
+<!-- Replace 'favicon.ico' with your icon file path or URL -->
+
+
+<style>
+     .grqyab-text {
+          font-family: 'Playfair Display', serif !important;
+          letter-spacing: 0.15em;
+     }
+     .main-content h1, .main-content p {
+          font-family: 'Cinzel', serif;
+     }
+     .main-gif {
+          display: none;
+          margin-top: 20px;
+          max-width: 90vw;
+          max-height: 40vh;
+     }
+     .main-gif.show {
+          display: block;
+     }
+</style>
+<script>
+     // Show GIF after main content appears
+     window.addEventListener('DOMContentLoaded', function() {
+          setTimeout(function() {
+                 document.getElementById('overlay').classList.add('hide');
+                 document.getElementById('mainContent').classList.add('show');
+                 document.body.style.overflow = '';
+
+                 // Show timer above the text
+                 var timer = document.createElement('div');
+                 timer.id = 'countdown-timer';
+                 timer.style.fontFamily = "'Cinzel', serif";
+                 timer.style.fontSize = '2rem';
+                 timer.style.marginBottom = '20px';
+                 timer.style.textAlign = 'center';
+                 timer.textContent = '3';
+                 var mainContent = document.getElementById('mainContent');
+                 mainContent.insertBefore(timer, mainContent.firstChild);
+
+                 var count = 3;
+                 var countdownInterval = setInterval(function() {
+                          count--;
+                          if (count > 0) {
+                                 timer.textContent = count;
+                          } else {
+                                 clearInterval(countdownInterval);
+                                 timer.style.display = 'none';
+                          }
+                 }, 1000);
+
+                 // Replace text with GIF after a longer delay (3 seconds)
+                 setTimeout(function() {
+                          var h1 = document.querySelector('.main-content h1');
+                          var p = document.querySelector('.main-content p');
+                          if (h1) h1.style.display = 'none';
+                          if (p) p.style.display = 'none';
+                          var gif = document.getElementById('mainGif');
+                          if (gif) gif.classList.add('show');
+                 }, 3000);
+          // To change the GIF, replace the src attribute of the <img id="mainGif"> element in your HTML.
+          // Example: <img id="mainGif" class="main-gif" src="your-gif-url.gif" alt="GIF">
+          }, 2000);
+     });
+</script>
